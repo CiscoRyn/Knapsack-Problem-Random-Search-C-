@@ -34,7 +34,7 @@
         return K[n][W];
     }
     
-    int acak2(int r){
+    int random(int r){
 	
 	int num = rand() % r ;
 	return num;
@@ -42,24 +42,24 @@
 
     int main()
     {
-        cout << "Jumlah Barang : ";
+        cout << "Input how many thing in the bag : ";
         int n, W, l, c, knaptemp, sum;
         cin >> n;
         int val[n], wt[n];
         for (int i = 0; i < n; i++)
         {
-        cout<<"Inputkan barang manfaat dan berat dari barang ke-" << i << "\n";
-        cout<< "Manfaat  : "; cin >> val[i]; 
-        cout<< "Berat    : "; cin >> wt[i]; cout<< "\n";
+        cout<<"Input the value and the weight-" << i << "\n";
+        cout<< "Value  : "; cin >> val[i]; 
+        cout<< "Weight    : "; cin >> wt[i]; cout<< "\n";
         }
         
         for(int z = 0; z < n ; z++){
         	sum += val[z];
 		}
 
-        cout << "Input Maksimal Berat ";
+        cout << "Input Maximum Weight ";
         cin >> W;
-        cout << "Inputkan berapa iterasi ";
+        cout << "How Much Iteration ";
         cin >> l;    
         
         knaptemp = knapSack(W, wt, val, n,l);
@@ -67,13 +67,13 @@
         for (c=0; c<l; c++){
         int knapsack = knapSack(W, wt, val, n,l);
         if(knapsack > sum ) {
-        	knapsack = knapsack-acak2(W);
+        	knapsack = knapsack-random(W);
 		} else {
         if (c%2 == 0){
-        	knapsack = knapsack-acak2(W);
+        	knapsack = knapsack-random(W);
 		}
 		else {
-			knapsack = knapsack+acak2(W);
+			knapsack = knapsack+random(W);
 		}
 		if(knapsack > knaptemp){
 			knaptemp = knapsack;
